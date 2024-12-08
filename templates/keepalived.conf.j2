@@ -38,7 +38,7 @@ vrrp_track_process {{ keepalived_track_process }} {
 {% if keepalived_activate_script %}
 vrrp_script {{ keepalived_script_name }} {
     script "{{ keepalived_script_command }}"
-    interval 2
+    interval {{ keepalived_interval }}
 {% if keepalived_weight is defined %}
     weight {{ keepalived_weight }}
 {% endif %}

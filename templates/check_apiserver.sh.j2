@@ -1,0 +1,11 @@
+#!/bin/sh
+
+errorExit() {
+    echo "*** $*" 1>&2
+    exit 1
+}
+
+APISERVER_VIP={{ keepalived_virtual_ip_address }}
+APISERVER_DEST_PORT={{ haproxy_frontend_port }}
+
+curl -sfk --max-time 2 https://${APISERVER_VIP}:${APISERVER_DEST_PORT}/healthz -o /dev/null || errorExit "Error GET https://${APISERVER_VIP}:${APISERVER_DEST_PORT}/healthz"

@@ -141,6 +141,16 @@
     mode: '0644'
   notify: Reload Keepalived
 
+- name: Create Configuration File.
+  become: yes
+  ansible.builtin.template:
+    src: check_apiserver.sh.j2
+    dest: "{{ keepalived_check_apiserver_path }}"
+    owner: root
+    group: root
+    mode: '0750'
+  notify: Reload Keepalived
+
 - name: Verify Keepalived configuration.
   become: yes
   ansible.builtin.command:

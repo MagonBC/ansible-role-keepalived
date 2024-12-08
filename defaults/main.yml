@@ -33,6 +33,9 @@ keepalived_conf_file_path: "{{ keepalived_conf_dir }}/keepalived.conf"
 # Path to Keepalived sysconfig file
 keepalived_sysconfig_file_path: "{{ keepalived_conf_dir }}/keepalived.sysconfig"
 
+# Path to Keepalived sysconfig file
+keepalived_check_apiserver_path: "{{ keepalived_conf_dir }}/check_apiserver.sh"
+
 # Name of the template file for Systemd service
 keepalived_service_template: 'keepalived.service.j2'
 
@@ -67,7 +70,7 @@ keepalived_unicast_src_ip: '{{ ansible_default_ipv4.address }}'
 # Enable process tracking
 keepalived_enable_process_tracking: true
 # Define which process shall be tracked
-keepalived_track_process: 'haproxy'
+keepalived_track_process: 'check_apiserver'
 
 # Flag to activate a script to be executed
 keepalived_activate_script: false
